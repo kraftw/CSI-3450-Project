@@ -1,5 +1,5 @@
 CREATE TABLE Customer (
-    CustomerID SERIAL PRIMARY KEY,
+    CustomerID INT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Email VARCHAR(100) UNIQUE,
@@ -12,25 +12,25 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE Publisher (
-    PublisherID SERIAL PRIMARY KEY,
+    PublisherID INT PRIMARY KEY,
     Name VARCHAR(100),
     Address VARCHAR(255),
     Phone VARCHAR(20)
 );
 
 CREATE TABLE Category (
-    CategoryID SERIAL PRIMARY KEY,
+    CategoryID INT PRIMARY KEY,
     CategoryName VARCHAR(100) UNIQUE
 );
 
 CREATE TABLE Author (
-    AuthorID SERIAL PRIMARY KEY,
+    AuthorID INT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50)
 );
 
 CREATE TABLE Book (
-    BookID SERIAL PRIMARY KEY,
+    BookID INT PRIMARY KEY,
     Title VARCHAR(255),
     ISBN VARCHAR(20) UNIQUE,
     PublicationYear INT CHECK (PublicationYear > 0),
@@ -46,7 +46,7 @@ CREATE TABLE BookAuthor (
 );
 
 CREATE TABLE Orders (
-    OrderID SERIAL PRIMARY KEY,
+    OrderID INT PRIMARY KEY,
     CustomerID INT REFERENCES Customer(CustomerID) ON DELETE CASCADE,
     OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     TotalAmount DECIMAL(10,2)
@@ -63,7 +63,7 @@ CREATE TABLE OrderDetail (
 CREATE TYPE payment_method_enum AS ENUM ('Credit Card', 'Debit Card', 'PayPal', 'Bank Transfer');
 
 CREATE TABLE Payment (
-    PaymentID SERIAL PRIMARY KEY,
+    PaymentID INT PRIMARY KEY,
     OrderID INT UNIQUE REFERENCES Orders(OrderID) ON DELETE CASCADE,
     PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PaymentMethod payment_method_enum,
