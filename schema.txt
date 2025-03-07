@@ -1,0 +1,71 @@
+CREATE TABLE Customer (
+    CustomerID SERIAL PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100) UNIQUE,
+    Phone VARCHAR(20),
+    Address VARCHAR(255),
+    City VARCHAR(50),
+    State VARCHAR(50),
+    ZipCode VARCHAR(20),
+    Country VARCHAR(50)
+);
+
+CREATE TABLE Publisher (
+    PublisherID SERIAL PRIMARY KEY,
+    Name VARCHAR(100),
+    Address VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+CREATE TABLE Category (
+    CategoryID SERIAL PRIMARY KEY,
+    CategoryName VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE Author (
+    AuthorID SERIAL PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+
+CREATE TABLE Book (
+    BookID SERIAL PRIMARY KEY,
+    Title VARCHAR(255),
+    ISBN VARCHAR(20) UNIQUE,
+    PublicationYear INT CHECK (PublicationYear > 0),
+    Price DECIMAL(10,2),
+    PublisherID INT REFERENCES Publisher(PublisherID) ON DELETE SET NULL,
+    CategoryID INT REFERENCES Category(CategoryID) ON DELETE SET NULL
+);
+
+CREATE TABLE BookAuthor (
+    BookID INT REFERENCES Book(BookID) ON DELETE CASCADE,
+    AuthorID INT REFERENCES Author(AuthorID) ON DELETE CASCADE,
+    PRIMARY KEY (BookID, AuthorID)
+);
+
+CREATE TABLE Orders (
+    OrderID SERIAL PRIMARY KEY,
+    CustomerID INT REFERENCES Customer(CustomerID) ON DELETE CASCADE,
+    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    TotalAmount DECIMAL(10,2)
+);
+
+CREATE TABLE OrderDetail (
+    OrderID INT REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    BookID INT REFERENCES Book(BookID) ON DELETE CASCADE,
+    Quantity INT CHECK (Quantity > 0),
+    Subtotal DECIMAL(10,2),
+    PRIMARY KEY (OrderID, BookID)
+);
+
+CREATE TYPE payment_method_enum AS ENUM ('Credit Card', 'Debit Card', 'PayPal', 'Bank Transfer');
+
+CREATE TABLE Payment (
+    PaymentID SERIAL PRIMARY KEY,
+    OrderID INT UNIQUE REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PaymentMethod payment_method_enum,
+    Amount DECIMAL(10,2)
+);
