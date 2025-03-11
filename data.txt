@@ -1,0 +1,97 @@
+-- Insert large data into Publisher
+INSERT INTO Publisher (PublisherID, Name, Address, Phone)
+VALUES 
+    (1, 'Penguin Books', '123 Penguin St, New York, NY', '123-456-7890'),
+    (2, 'HarperCollins', '456 Harper Ave, Chicago, IL', '234-567-8901'),
+    (3, 'Macmillan', '789 Macmillan Rd, Los Angeles, CA', '345-678-9012'),
+    (4, 'Random House', '101 Random Rd, San Francisco, CA', '456-789-0123'),
+    (5, 'Simon & Schuster', '202 Simon Blvd, Boston, MA', '567-890-1234'),
+    (6, 'Hachette Livre', '303 Hachette St, Paris, France', '678-901-2345'),
+    (7, 'Scholastic', '404 Scholastic Way, London, UK', '789-012-3456'),
+    (8, 'Oxford University Press', '505 Oxford Rd, Oxford, UK', '890-123-4567'),
+    (9, 'Cambridge University Press', '606 Cambridge St, Cambridge, UK', '901-234-5678'),
+    (10, 'Wiley', '707 Wiley Ave, New York, NY', '012-345-6789');
+
+-- Insert large data into Category
+INSERT INTO Category (CategoryID, CategoryName)
+VALUES 
+    (1, 'Fantasy'),
+    (2, 'Science Fiction'),
+    (3, 'Mystery'),
+    (4, 'Non-fiction'),
+    (5, 'Romance'),
+    (6, 'Thriller'),
+    (7, 'Biography'),
+    (8, 'History'),
+    (9, 'Self-help'),
+    (10, 'Children''s');
+
+-- Insert large data into Author
+INSERT INTO Author (AuthorID, FirstName, LastName)
+VALUES 
+    (1, 'J.K.', 'Rowling'),
+    (2, 'Isaac', 'Asimov'),
+    (3, 'Agatha', 'Christie'),
+    (4, 'Stephen', 'King'),
+    (5, 'George', 'Orwell'),
+    (6, 'J.R.R.', 'Tolkien'),
+    (7, 'Jane', 'Austen'),
+    (8, 'Charles', 'Dickens'),
+    (9, 'Leo', 'Tolstoy'),
+    (10, 'Harper', 'Lee');
+
+-- Insert large data into Customer
+INSERT INTO Customer (CustomerID, FirstName, LastName, Email, Phone, Address, City, State, ZipCode, Country)
+VALUES 
+    (1, 'John', 'Doe', 'john.doe@email.com', '555-1111', '123 Elm St', 'New York', 'NY', '10001', 'USA'),
+    (2, 'Jane', 'Smith', 'jane.smith@email.com', '555-2222', '456 Oak St', 'Chicago', 'IL', '60007', 'USA'),
+    (3, 'Mike', 'Johnson', 'mike.johnson@email.com', '555-3333', '789 Pine St', 'Los Angeles', 'CA', '90001', 'USA'),
+    (4, 'Emily', 'Davis', 'emily.davis@email.com', '555-4444', '321 Maple St', 'San Francisco', 'CA', '94102', 'USA'),
+    (5, 'David', 'Martinez', 'david.martinez@email.com', '555-5555', '654 Cedar St', 'Miami', 'FL', '33101', 'USA'),
+    (6, 'Sarah', 'Williams', 'sarah.williams@email.com', '555-6666', '987 Birch St', 'Chicago', 'IL', '60601', 'USA'),
+    (7, 'Robert', 'Garcia', 'robert.garcia@email.com', '555-7777', '135 Maple St', 'Los Angeles', 'CA', '90001', 'USA'),
+    (8, 'Linda', 'Lopez', 'linda.lopez@email.com', '555-8888', '246 Oak St', 'Miami', 'FL', '33101', 'USA'),
+    (9, 'James', 'Taylor', 'james.taylor@email.com', '555-9999', '369 Pine St', 'Boston', 'MA', '02101', 'USA'),
+    (10, 'Maria', 'Hernandez', 'maria.hernandez@email.com', '555-0000', '852 Elm St', 'San Francisco', 'CA', '94102', 'USA');
+
+-- Insert large data into Book
+INSERT INTO Book (BookID, Title, ISBN, PublicationYear, Price, PublisherID, CategoryID)
+VALUES 
+    (1, 'Harry Potter and the Sorcerer''s Stone', '9780747532743', 1997, 19.99, 1, 1),
+    (2, 'Foundation', '9780553293357', 1951, 15.99, 2, 2),
+    (3, 'Murder on the Orient Express', '9780062693662', 1934, 12.99, 3, 3),
+    (4, 'The Shining', '9780307743657', 1977, 14.99, 4, 6),
+    (5, '1984', '9780451524935', 1949, 16.99, 5, 4),
+    (6, 'The Hobbit', '9780345339683', 1937, 18.99, 6, 1),
+    (7, 'Pride and Prejudice', '9780141040349', 1813, 12.99, 7, 5),
+    (8, 'Great Expectations', '9780141439563', 1861, 13.99, 8, 7),
+    (9, 'War and Peace', '9781400079988', 1869, 17.99, 9, 8),
+    (10, 'To Kill a Mockingbird', '9780060935467', 1960, 16.99, 10, 3);
+
+-- Insert large data into Orders
+INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount)
+VALUES 
+    (1, 1, '2025-03-01 12:30:00', 39.98),
+    (2, 2, '2025-03-02 13:30:00', 27.98),
+    (3, 3, '2025-03-03 14:30:00', 25.98),
+    (4, 4, '2025-03-04 15:30:00', 35.98),
+    (5, 5, '2025-03-05 16:30:00', 43.98),
+    (6, 6, '2025-03-06 17:30:00', 29.98),
+    (7, 7, '2025-03-07 18:30:00', 31.98),
+    (8, 8, '2025-03-08 19:30:00', 37.98),
+    (9, 9, '2025-03-09 20:30:00', 28.98),
+    (10, 10, '2025-03-10 21:30:00', 34.98);
+
+-- Insert large data into Payment
+INSERT INTO Payment (PaymentID, OrderID, PaymentDate, PaymentMethod, Amount)
+VALUES 
+    (1, 1, '2025-03-01 12:45:00', 'Credit Card', 39.98),
+    (2, 2, '2025-03-02 13:45:00', 'PayPal', 27.98),
+    (3, 3, '2025-03-03 14:45:00', 'Debit Card', 25.98),
+    (4, 4, '2025-03-04 15:45:00', 'Bank Transfer', 35.98),
+    (5, 5, '2025-03-05 16:45:00', 'Credit Card', 43.98),
+    (6, 6, '2025-03-06 17:45:00', 'PayPal', 29.98),
+    (7, 7, '2025-03-07 18:45:00', 'Debit Card', 31.98),
+    (8, 8, '2025-03-08 19:45:00', 'Bank Transfer', 37.98),
+    (9, 9, '2025-03-09 20:45:00', 'Credit Card', 28.98),
+    (10, 10, '2025-03-10 21:45:00', 'PayPal', 34.98);
