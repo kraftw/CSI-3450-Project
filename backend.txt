@@ -1,0 +1,23 @@
+# same code with my details removed
+import psycopg2
+
+DB_HOST = "localhost"
+DB_NAME = "project"
+DB_USER = "postgres"
+DB_PASS = "password"
+DB_PORT = "5432"
+
+try:
+    connection = psycopg2.connect(
+        dbname = DB_NAME,
+        user = DB_USER,
+        password = DB_PASS,
+        host = DB_HOST,
+        port = DB_PORT,
+    )
+    print("database successfully connected")
+    
+    connection.close()
+    
+except Exception as e:
+    print("error connecting to the database:", e)
