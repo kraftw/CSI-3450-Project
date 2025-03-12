@@ -1,23 +1,28 @@
 # same code with my details removed
+from flask import Flask, render_template
 import psycopg2
 
-DB_HOST = "localhost"
-DB_NAME = "project"
-DB_USER = "postgres"
-DB_PASS = "password"
-DB_PORT = "5432"
+app = Flask(__name__)
 
-try:
+def get_db_connection():
     connection = psycopg2.connect(
-        dbname = DB_NAME,
-        user = DB_USER,
-        password = DB_PASS,
-        host = DB_HOST,
-        port = DB_PORT,
+        DB_HOST = "localhost",
+        DB_NAME = "project",
+        DB_USER = "postgres",
+        DB_PASS = "password",
+        DB_PORT = "5432",    
     )
-    print("database successfully connected")
-    
+    return connection
+
+@app.route('/')
+def index():
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM your_table;")
+    data = cursor.fetchall()
+    cursor.close()
     connection.close()
-    
-except Exception as e:
-    print("error connecting to the database:", e)
+    return render_template('index.html', data = data)
+
+if __name__ == '__main__':
+    app.run(debug = True)
