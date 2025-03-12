@@ -4,90 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Private Data</h1>
-    
-    <h2>Order Overview</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                {% for column in orderdetail_columns %}
-                    <th>{{ column }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in orderdetails %}
+    <!-- Header Section -->
+    <header></header>
+
+    <div class="container">
+        <h1>Company Information</h1>
+
+        <!-- Order Details Section-->
+        <h2>Order Overview</h2>
+        <table>
+            <thead>
                 <tr>
-                    {% for item in row %}
-                        <td>{{ item }}</td>
+                    {% for column in orderdetail_columns %}
+                        <th>{{ column }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <h2>Customer Details</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                {% for column in customer_columns %}
-                    <th>{{ column }}</th>
+            </thead>
+            <tbody>
+                {% for row in orderdetails %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in customers %}
+            </tbody>
+        </table>
+
+        <!-- Customer Section -->
+        <h2>Customer Details</h2>
+        <table>
+            <thead>
                 <tr>
-                    {% for item in row %}
-                        <td>{{ item }}</td>
+                    {% for column in customer_columns %}
+                        <th>{{ column }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <h2>Order Details</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                {% for column in orders_columns %}
-                    <th>{{ column }}</th>
+            </thead>
+            <tbody>
+                {% for row in customers %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in orders %}
+            </tbody>
+        </table>
+
+        <!-- Order Section -->
+        <h2>Order Details</h2>
+        <table>
+            <thead>
                 <tr>
-                    {% for item in row %}
-                        <td>{{ item }}</td>
+                    {% for column in orders_columns %}
+                        <th>{{ column }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <h2>Payment Details</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                {% for column in payment_columns %}
-                    <th>{{ column }}</th>
+            </thead>
+            <tbody>
+                {% for row in orders %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in payments %}
+            </tbody>
+        </table>
+
+        <!-- Payment Section -->
+        <h2>Payment Details</h2>
+        <table>
+            <thead>
                 <tr>
-                    {% for item in row %}
-                        <td>{{ item }}</td>
+                    {% for column in payment_columns %}
+                        <th>{{ column }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="{{ url_for('home') }}">Back to Home</a>
+            </thead>
+            <tbody>
+                {% for row in payments %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Elijah Day, Franciso Henriques, Zachary Wood. CSI-3450 Winter 2026</p>
+    </footer>
 </body>
 </html>

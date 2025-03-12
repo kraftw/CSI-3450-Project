@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Home Page!</h1>
-    <p>We're glad to see you. Click below to view the data from the database:</p>
-    <a href="{{ url_for('bookauthor') }}">Go to Books &amp; Author Page</a><br>
-    <a href="{{ url_for('publisher') }}">Go to Publisher Page</a><br>
-    <a href="{{ url_for('login') }}">Go to Login Page</a><br>
+    <!-- Header -->
+    <header></header>
+
+    <!-- Splash Text -->
+    <div class="container">
+        <h1>Welcome to<br>Databooks Online Bookstore!</h1>
+        <p>We're glad to see you! Click below to view Books, Authors and/or Publishers!</p>
+        <div class="links-container">
+            <a href="{{ url_for('bookauthor') }}">Go to Books &amp; Author Page</a><br>
+            <a href="{{ url_for('publisher') }}">Go to Publisher Page</a><br>
+            <a href="{{ url_for('login') }}">Go to Employee Login Page</a><br>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Elijah Day, Franciso Henriques, Zachary Wood. CSI-3450 Winter 2026</p>
+    </footer>
 </body>
 </html>
