@@ -1,16 +1,19 @@
-# same code with my details removed
-from flask import Flask, render_template
+import os
 import psycopg2
+from dotenv import load_dotenv
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+load_dotenv("D:\Coding\Github\CSI-3450-Project\ini.env")
+
 def get_db_connection():
     connection = psycopg2.connect(
-        DB_HOST = "localhost",
-        DB_NAME = "project",
-        DB_USER = "postgres",
-        DB_PASS = "password",
-        DB_PORT = "5432",    
+        dbname   = os.getenv("DB_NAME"),
+        user     = os.getenv("DB_USER"),
+        password = os.getenv("DB_PASSWORD"),
+        host     = os.getenv("DB_HOST"),
+        port     = os.getenv("DB_PORT"),    
     )
     return connection
 
