@@ -2,3 +2,5 @@
 extras/test.py
 
 ini.env
+
+__pycache__/mappings.cpython-312.pyc
